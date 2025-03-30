@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace database_manager_project.Properties
+namespace DbManager.Properties
 {
 
 

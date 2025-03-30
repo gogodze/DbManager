@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using DbManager.Abstractions;
+using DbManager.Services;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace database_manager_project
+namespace DbManager
 {
     internal static class Program
     {
@@ -16,7 +16,21 @@ namespace database_manager_project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new databasemanager());
+
+            var serviceCollection = new ServiceCollection();
+            ConfigureServices(serviceCollection);
+            using (ServiceProvider sp = serviceCollection.BuildServiceProvider())
+            {
+                var program = sp.GetRequiredService<DatabaseManager>();
+                Application.Run(program);
+            }
+        }
+
+        private static void ConfigureServices(ServiceCollection services)
+        {
+            services.AddTransient<DatabaseManager>();
+            services.AddSingleton<IFileAccessService,FileAccessService>();
+            services.AddSingleton<IDatabaseAccessService,DbAccessService>();
         }
     }
 }

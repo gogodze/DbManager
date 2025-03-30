@@ -1,177 +1,99 @@
 ﻿using System;
 using System.Data.SQLite;
-using System.Drawing;
 using System.Data;
-using System.IO;
 using System.Windows.Forms;
+using DbManager.Abstractions;
 
-namespace database_manager_project
+namespace DbManager
 {
-    public partial class databasemanager : Form
+    public partial class DatabaseManager : Form
     {
+        private readonly IFileAccessService _fileAccessService;
+        private readonly IDatabaseAccessService _databaseAccessService;
 
-
-        private static SQLiteConnection connection = null;
-        public databasemanager()
+        public DatabaseManager(IFileAccessService fileAccessService, IDatabaseAccessService databaseAccessService)
         {
+            _fileAccessService = fileAccessService;
+            _databaseAccessService = databaseAccessService;
             InitializeComponent();
         }
 
-       
-
-        private void Form1_Load(object sender, EventArgs e)
+        private void UpdateDataView()
         {
-
-        }
-
-        private void Query_Box(object sender, EventArgs e)
-        {
-            
-         
-        }
-
-        private void Load_Database_Button(object sender, EventArgs e)
-        {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "(*.sqlite3) | *.sqlite3";
-            DialogResult result = ofd.ShowDialog();
-
-
-            switch (result.ToString())
-
+            using (DataSet ds = new DataSet())
             {
-                case "OK":
-                    {
-                        MessageBox.Show($"selected file is {ofd.FileName}");
-                        connection = new SQLiteConnection($"Data Source = {ofd.FileName}; Version = 3;");
-                        SQLiteDataAdapter adapter = new SQLiteDataAdapter(
-                            "SELECT name Tables FROM sqlite_master WHERE type = 'table' and name != 'sqlite_sequence'", connection
-                            );
-
-                        using (DataSet ds = new DataSet())
-                            {
-                                adapter.Fill(ds);
-                                dataGridView1.DataSource = ds.Tables[0];
-                                dataGridView1.Refresh();
-                                button2.Visible = true;
-                                closedatabase.Visible = true;
-                            }
-                        
-                       
-                        
-                        break;
-                    }
-
-                case "Cancel":
-                    {
-                        MessageBox.Show("operation canceled by user");
-                        break;
-                    }
-
-
+                _databaseAccessService.GetDatabaseData().Fill(ds);
+                dataView.DataSource = ds.Tables[0];
+                dataView.Refresh();
             }
-            
         }
 
-        private void Create_Database_And_Open_It_Button(object sender, EventArgs e)
+        private void LoadDatabase(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "(*.db) | *.db";
-            DialogResult result = saveFileDialog.ShowDialog();
+            if (_fileAccessService.ShowOpenDialog(out var filePath))
+            {
+                _databaseAccessService.ConnectToDatabase(filePath);
+                UpdateDataView();
+                executeQuery.Visible = true;
+                closeDatabase.Visible = true;
+            }
+
+            else
+            {
+                MessageBox.Show(@"Please select a file to open", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private void CreateDatabase(object sender, EventArgs e)
+        {
             try
             {
-                switch (result.ToString())
+                if (_fileAccessService.ShowSaveDialog(out var filePath))
                 {
+                    _databaseAccessService.ConnectToDatabase(filePath);
+                    UpdateDataView();
+                    executeQuery.Visible = true;
+                    closeDatabase.Visible = true;
+                }
 
-
-                    case "OK":
-                        {
-                            string path = saveFileDialog.FileName;
-                            connection = new SQLiteConnection($"Data Source = {path}; Version = 3;");
-                            button2.Visible = true;
-                            closedatabase.Visible = true;
-                            break;
-                          
-                        };
-
-                    case "Cancel":
-                        {
-                            MessageBox.Show("operation canceled by user");
-                            break;
-                        };
-
-
- 
-                 };
+                else
+                {
+                    MessageBox.Show(@"Please select a location to save to", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-             
             catch (Exception ex)
             {
-               LoggerWindow.Text = ex.Message; 
+                logWindow.Text = ex.Message;
             }
-
-           
-
-           
-
         }
 
-        private void Execute_query_button(object sender, EventArgs e)
-        {
 
-            string query = textBox1.Text;
+        private void ExecuteQuery(object sender, EventArgs e)
+        {
             try
             {
-
-                using (var sqlDataAdapt = new SQLiteDataAdapter(query, connection))
+                using (DataTable dt = new DataTable())
                 {
-                    using (DataTable dt = new DataTable())
-                    {
-                        sqlDataAdapt.Fill(dt);
-                        dataGridView1.DataSource = dt;
-
-                    }
+                    _databaseAccessService.ExecuteQuery(queryBox.Text).Fill(dt);
+                    dataView.DataSource = dt;
                 }
-                
-                LoggerWindow.Text = "";
+
+                logWindow.Text = "";
             }
 
             catch (SQLiteException ex)
             {
-                LoggerWindow.Text = ex.Message;
+                logWindow.Text = ex.Message;
             }
-
-          
-
-
-
-        }
-        
-        private void Logger_Window(object sender, EventArgs e)
-        {
-
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void CloseClick(object sender, EventArgs e)
         {
-         
-        }
-
-        private void closedatabase_Click(object sender, EventArgs e)
-        {
-     
-            dataGridView1.DataSource = null;
-            connection.Close();
-            button2.Visible = false;
-            closedatabase.Visible = false;
-        
-            
-
-        }
-
-        private void savedata_Click(object sender, EventArgs e)
-        {
-            
+            _databaseAccessService.CloseConnection();
+            dataView.DataSource = null;
+            executeQuery.Visible = false;
+            closeDatabase.Visible = false;
         }
     }
 }

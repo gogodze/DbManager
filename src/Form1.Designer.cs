@@ -1,6 +1,6 @@
-﻿namespace database_manager_project
+﻿namespace DbManager
 {
-    partial class databasemanager
+    partial class DatabaseManager
     {
         /// <summary>
         /// Required designer variable.
@@ -28,96 +28,91 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(databasemanager));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.loaddatabase = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.LoggerWindow = new System.Windows.Forms.TextBox();
-            this.closedatabase = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DatabaseManager));
+            this.dataView = new System.Windows.Forms.DataGridView();
+            this.queryBox = new System.Windows.Forms.TextBox();
+            this.loadDatabase = new System.Windows.Forms.Button();
+            this.createDatabase = new System.Windows.Forms.Button();
+            this.executeQuery = new System.Windows.Forms.Button();
+            this.logWindow = new System.Windows.Forms.TextBox();
+            this.closeDatabase = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            resources.ApplyResources(this.dataGridView1, "dataGridView1");
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // textBox1
-            // 
-            resources.ApplyResources(this.textBox1, "textBox1");
-            this.textBox1.Name = "textBox1";
-            this.textBox1.TextChanged += new System.EventHandler(this.Query_Box);
-            // 
-            // loaddatabase
-            // 
-            resources.ApplyResources(this.loaddatabase, "loaddatabase");
-            this.loaddatabase.Name = "loaddatabase";
-            this.loaddatabase.UseVisualStyleBackColor = true;
-            this.loaddatabase.Click += new System.EventHandler(this.Load_Database_Button);
-            // 
-            // button1
-            // 
-            resources.ApplyResources(this.button1, "button1");
-            this.button1.Name = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Create_Database_And_Open_It_Button);
-            // 
-            // button2
-            // 
-            resources.ApplyResources(this.button2, "button2");
-            this.button2.Name = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.Execute_query_button);
-            // 
-            // LoggerWindow
-            // 
-            resources.ApplyResources(this.LoggerWindow, "LoggerWindow");
-            this.LoggerWindow.Name = "LoggerWindow";
-            this.LoggerWindow.ReadOnly = true;
-            this.LoggerWindow.TextChanged += new System.EventHandler(this.Logger_Window);
-            // 
-            // closedatabase
-            // 
-            resources.ApplyResources(this.closedatabase, "closedatabase");
-            this.closedatabase.Name = "closedatabase";
-            this.closedatabase.UseVisualStyleBackColor = true;
-            this.closedatabase.Click += new System.EventHandler(this.closedatabase_Click);
-            // 
-            // databasemanager
-            // 
+            //
+            // dataView
+            //
+            this.dataView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            resources.ApplyResources(this.dataView, "dataView");
+            this.dataView.Name = "dataView";
+            //
+            // queryBox
+            //
+            resources.ApplyResources(this.queryBox, "queryBox");
+            this.queryBox.Name = "queryBox";
+            //
+            // loadDatabase
+            //
+            resources.ApplyResources(this.loadDatabase, "loadDatabase");
+            this.loadDatabase.Name = "loadDatabase";
+            this.loadDatabase.UseVisualStyleBackColor = true;
+            this.loadDatabase.Click += new System.EventHandler(this.LoadDatabase);
+            //
+            // createDatabase
+            //
+            resources.ApplyResources(this.createDatabase, "createDatabase");
+            this.createDatabase.Name = "createDatabase";
+            this.createDatabase.UseVisualStyleBackColor = true;
+            this.createDatabase.Click += new System.EventHandler(this.CreateDatabase);
+            //
+            // executeQuery
+            //
+            resources.ApplyResources(this.executeQuery, "executeQuery");
+            this.executeQuery.Name = "executeQuery";
+            this.executeQuery.UseVisualStyleBackColor = true;
+            this.executeQuery.Click += new System.EventHandler(this.ExecuteQuery);
+            //
+            // logWindow
+            //
+            resources.ApplyResources(this.logWindow, "logWindow");
+            this.logWindow.Name = "logWindow";
+            this.logWindow.ReadOnly = true;
+            //
+            // closeDatabase
+            //
+            resources.ApplyResources(this.closeDatabase, "closeDatabase");
+            this.closeDatabase.Name = "closeDatabase";
+            this.closeDatabase.UseVisualStyleBackColor = true;
+            this.closeDatabase.Click += new System.EventHandler(this.CloseClick);
+            //
+            // DatabaseManager
+            //
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.closedatabase);
-            this.Controls.Add(this.LoggerWindow);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.loaddatabase);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.closeDatabase);
+            this.Controls.Add(this.logWindow);
+            this.Controls.Add(this.executeQuery);
+            this.Controls.Add(this.createDatabase);
+            this.Controls.Add(this.loadDatabase);
+            this.Controls.Add(this.queryBox);
+            this.Controls.Add(this.dataView);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
-            this.Name = "databasemanager";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Name = "DatabaseManager";
+            ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button loaddatabase;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox LoggerWindow;
-        private System.Windows.Forms.Button closedatabase;
+        private System.Windows.Forms.DataGridView dataView;
+        private System.Windows.Forms.TextBox queryBox;
+        private System.Windows.Forms.Button loadDatabase;
+        private System.Windows.Forms.Button createDatabase;
+        private System.Windows.Forms.Button executeQuery;
+        private System.Windows.Forms.TextBox logWindow;
+        private System.Windows.Forms.Button closeDatabase;
     }
 }
 
