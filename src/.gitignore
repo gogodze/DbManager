@@ -1,0 +1,43 @@
+﻿# Build Folders
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.vs/
+
+# Package-related
+/packages/*/
+/packages/
+packages/
+src/packages/
+
+*.nupkg
+
+# Logs
+*.log
+
+# Visual Studio Code
+.vscode/
+
+# NuGet
+.nuget/
+project.lock.json
+
+# Windows-specific
+Thumbs.db
+Desktop.ini
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Rider
+.idea/
+
+# Other
+*.bak
+*.cache

@@ -38,55 +38,56 @@
             this.closeDatabase = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // dataView
-            //
+            // 
             this.dataView.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             resources.ApplyResources(this.dataView, "dataView");
             this.dataView.Name = "dataView";
-            //
+            this.dataView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataView_CellContentClick);
+            // 
             // queryBox
-            //
+            // 
             resources.ApplyResources(this.queryBox, "queryBox");
             this.queryBox.Name = "queryBox";
-            //
+            // 
             // loadDatabase
-            //
+            // 
             resources.ApplyResources(this.loadDatabase, "loadDatabase");
             this.loadDatabase.Name = "loadDatabase";
             this.loadDatabase.UseVisualStyleBackColor = true;
             this.loadDatabase.Click += new System.EventHandler(this.LoadDatabase);
-            //
+            // 
             // createDatabase
-            //
+            // 
             resources.ApplyResources(this.createDatabase, "createDatabase");
             this.createDatabase.Name = "createDatabase";
             this.createDatabase.UseVisualStyleBackColor = true;
             this.createDatabase.Click += new System.EventHandler(this.CreateDatabase);
-            //
+            // 
             // executeQuery
-            //
+            // 
             resources.ApplyResources(this.executeQuery, "executeQuery");
             this.executeQuery.Name = "executeQuery";
             this.executeQuery.UseVisualStyleBackColor = true;
             this.executeQuery.Click += new System.EventHandler(this.ExecuteQuery);
-            //
+            // 
             // logWindow
-            //
+            // 
             resources.ApplyResources(this.logWindow, "logWindow");
             this.logWindow.Name = "logWindow";
             this.logWindow.ReadOnly = true;
-            //
+            // 
             // closeDatabase
-            //
+            // 
             resources.ApplyResources(this.closeDatabase, "closeDatabase");
             this.closeDatabase.Name = "closeDatabase";
             this.closeDatabase.UseVisualStyleBackColor = true;
             this.closeDatabase.Click += new System.EventHandler(this.CloseClick);
-            //
+            // 
             // DatabaseManager
-            //
+            // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.closeDatabase);

@@ -1,13 +1,15 @@
-﻿using System.Data.SQLite;
+﻿using System.Data;
 
 namespace DbManager.Abstractions
 {
     public interface IDatabaseAccessService
     {
         void ConnectToDatabase(string databaseName);
-        SQLiteDataAdapter GetDatabaseData();
-        void CloseConnection();
-        SQLiteDataAdapter ExecuteQuery(string query);
+        DataSet GetTables();
 
+        DataSet GetDataFromTable(string tableName);
+        bool ExecuteQuery(string query, out DataSet result, out string errorMessage);
+        int ExecuteNonQuery(string query, out string errorMessage);
+        void CloseConnection();
     }
 }

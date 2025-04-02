@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.SQLite;
 using System.Data;
 using System.Windows.Forms;
 using DbManager.Abstractions;
@@ -18,14 +17,40 @@ namespace DbManager
             InitializeComponent();
         }
 
-        private void UpdateDataView()
+        private bool IsQuery(string sql)
         {
-            using (DataSet ds = new DataSet())
+            sql = sql.Trim().ToUpper();
+
+
+            if (sql.StartsWith("SELECT"))
             {
-                _databaseAccessService.GetDatabaseData().Fill(ds);
-                dataView.DataSource = ds.Tables[0];
-                dataView.Refresh();
+                return true;
             }
+            else if (sql.StartsWith("INSERT") || sql.StartsWith("UPDATE") || sql.StartsWith("DELETE") || sql.StartsWith("CREATE"))
+            {
+                return false;
+            }
+
+            return false;
+        }
+
+        private void UpdateDataView(DataSet ds = null, string tableName = null)
+        {
+            if (ds != null)
+            {
+                dataView.DataSource = ds.Tables[0];
+            }
+
+            else if (string.IsNullOrEmpty(tableName))
+            {
+                dataView.DataSource = _databaseAccessService.GetTables().Tables[0];
+            }
+            else
+            {
+                dataView.DataSource = _databaseAccessService.GetDataFromTable(tableName).Tables[0];
+            }
+
+            dataView.Refresh();
         }
 
         private void LoadDatabase(object sender, EventArgs e)
@@ -71,20 +96,15 @@ namespace DbManager
 
         private void ExecuteQuery(object sender, EventArgs e)
         {
-            try
+            if (_databaseAccessService.ExecuteQuery(queryBox.Text, out var result, out string error))
             {
-                using (DataTable dt = new DataTable())
-                {
-                    _databaseAccessService.ExecuteQuery(queryBox.Text).Fill(dt);
-                    dataView.DataSource = dt;
-                }
-
+                UpdateDataView(result);
                 logWindow.Text = "";
             }
 
-            catch (SQLiteException ex)
+            else
             {
-                logWindow.Text = ex.Message;
+                logWindow.Text = error;
             }
         }
 
@@ -94,6 +114,16 @@ namespace DbManager
             dataView.DataSource = null;
             executeQuery.Visible = false;
             closeDatabase.Visible = false;
+        }
+
+        private void dataView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                string cellValue = dataView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+
+                UpdateDataView(tableName: cellValue);
+            }
         }
     }
 }
