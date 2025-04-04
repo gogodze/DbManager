@@ -118,176 +118,176 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="dataView.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 12</value>
   </data>
-  <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="dataView.Size" type="System.Drawing.Size, System.Drawing">
     <value>369, 368</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
+  <data name="dataView.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.Name" xml:space="preserve">
-    <value>dataGridView1</value>
+  <data name="&gt;&gt;dataView.Name" xml:space="preserve">
+    <value>dataView</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.Type" xml:space="preserve">
+  <data name="&gt;&gt;dataView.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;dataView.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;dataGridView1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;dataView.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="textBox1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="queryBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>387, 12</value>
   </data>
-  <data name="textBox1.Multiline" type="System.Boolean, mscorlib">
+  <data name="queryBox.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="queryBox.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 286</value>
   </data>
-  <data name="textBox1.TabIndex" type="System.Int32, mscorlib">
+  <data name="queryBox.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBox1.Name" xml:space="preserve">
-    <value>textBox1</value>
+  <data name="&gt;&gt;queryBox.Name" xml:space="preserve">
+    <value>queryBox</value>
   </data>
-  <data name="&gt;&gt;textBox1.Type" xml:space="preserve">
+  <data name="&gt;&gt;queryBox.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;textBox1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;queryBox.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;textBox1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;queryBox.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="loaddatabase.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="loadDatabase.Location" type="System.Drawing.Point, System.Drawing">
     <value>616, 12</value>
   </data>
-  <data name="loaddatabase.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadDatabase.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
   </data>
-  <data name="loaddatabase.TabIndex" type="System.Int32, mscorlib">
+  <data name="loadDatabase.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="loaddatabase.Text" xml:space="preserve">
+  <data name="loadDatabase.Text" xml:space="preserve">
     <value>load database</value>
   </data>
-  <data name="&gt;&gt;loaddatabase.Name" xml:space="preserve">
-    <value>loaddatabase</value>
+  <data name="&gt;&gt;loadDatabase.Name" xml:space="preserve">
+    <value>loadDatabase</value>
   </data>
-  <data name="&gt;&gt;loaddatabase.Type" xml:space="preserve">
+  <data name="&gt;&gt;loadDatabase.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;loaddatabase.Parent" xml:space="preserve">
+  <data name="&gt;&gt;loadDatabase.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;loaddatabase.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;loadDatabase.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="createDatabase.Location" type="System.Drawing.Point, System.Drawing">
     <value>616, 41</value>
   </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="createDatabase.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
   </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
+  <data name="createDatabase.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="button1.Text" xml:space="preserve">
+  <data name="createDatabase.Text" xml:space="preserve">
     <value>create a database</value>
   </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
+  <data name="&gt;&gt;createDatabase.Name" xml:space="preserve">
+    <value>createDatabase</value>
   </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
+  <data name="&gt;&gt;createDatabase.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;createDatabase.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;createDatabase.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="executeQuery.Location" type="System.Drawing.Point, System.Drawing">
     <value>616, 70</value>
   </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="executeQuery.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
   </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
+  <data name="executeQuery.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="button2.Text" xml:space="preserve">
+  <data name="executeQuery.Text" xml:space="preserve">
     <value>Execute Query</value>
   </data>
-  <data name="button2.Visible" type="System.Boolean, mscorlib">
+  <data name="executeQuery.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
+  <data name="&gt;&gt;executeQuery.Name" xml:space="preserve">
+    <value>executeQuery</value>
   </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
+  <data name="&gt;&gt;executeQuery.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;executeQuery.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;executeQuery.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="LoggerWindow.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="logWindow.Location" type="System.Drawing.Point, System.Drawing">
     <value>387, 304</value>
   </data>
-  <data name="LoggerWindow.Multiline" type="System.Boolean, mscorlib">
+  <data name="logWindow.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="LoggerWindow.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="logWindow.Size" type="System.Drawing.Size, System.Drawing">
     <value>223, 76</value>
   </data>
-  <data name="LoggerWindow.TabIndex" type="System.Int32, mscorlib">
+  <data name="logWindow.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;LoggerWindow.Name" xml:space="preserve">
-    <value>LoggerWindow</value>
+  <data name="&gt;&gt;logWindow.Name" xml:space="preserve">
+    <value>logWindow</value>
   </data>
-  <data name="&gt;&gt;LoggerWindow.Type" xml:space="preserve">
+  <data name="&gt;&gt;logWindow.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;LoggerWindow.Parent" xml:space="preserve">
+  <data name="&gt;&gt;logWindow.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;LoggerWindow.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;logWindow.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="closedatabase.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="closeDatabase.Location" type="System.Drawing.Point, System.Drawing">
     <value>616, 99</value>
   </data>
-  <data name="closedatabase.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="closeDatabase.Size" type="System.Drawing.Size, System.Drawing">
     <value>117, 23</value>
   </data>
-  <data name="closedatabase.TabIndex" type="System.Int32, mscorlib">
+  <data name="closeDatabase.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="closedatabase.Text" xml:space="preserve">
+  <data name="closeDatabase.Text" xml:space="preserve">
     <value>close database</value>
   </data>
-  <data name="closedatabase.Visible" type="System.Boolean, mscorlib">
+  <data name="closeDatabase.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;closedatabase.Name" xml:space="preserve">
-    <value>closedatabase</value>
+  <data name="&gt;&gt;closeDatabase.Name" xml:space="preserve">
+    <value>closeDatabase</value>
   </data>
-  <data name="&gt;&gt;closedatabase.Type" xml:space="preserve">
+  <data name="&gt;&gt;closeDatabase.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;closedatabase.Parent" xml:space="preserve">
+  <data name="&gt;&gt;closeDatabase.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;closedatabase.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;closeDatabase.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -2208,7 +2208,7 @@
     <value>Database Manager</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>databasemanager</value>
+    <value>DatabaseManager</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
