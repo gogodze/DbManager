@@ -29,8 +29,8 @@ namespace DbManager
         private static void ConfigureServices(ServiceCollection services)
         {
             services.AddTransient<DatabaseManager>();
-            services.AddSingleton<IFileAccessService,FileAccessService>();
-            services.AddSingleton<IDatabaseAccessService,DbAccessService>();
+            services.AddSingleton<IFileAccessService, FileAccessService>();
+            services.AddSingleton<IDatabaseAccessService, DbAccessService>();
         }
     }
 }

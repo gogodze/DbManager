@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace DbManager.Abstractions
+﻿namespace DbManager.Abstractions
 {
     public interface IFileAccessService
     {

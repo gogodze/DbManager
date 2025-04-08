@@ -1,6 +1,7 @@
 ﻿using System.Data;
 using System.Data.SQLite;
 using DbManager.Abstractions;
+using DbManager.Util.Factory;
 
 namespace DbManager.Services
 {
@@ -17,23 +18,22 @@ namespace DbManager.Services
 
         public DataSet GetDataFromTable(string tableName)
         {
-            using (var command = new SQLiteCommand($"SELECT * FROM {tableName}", _connection))
-            using (var adapter = new SQLiteDataAdapter(command))
+            var getTableQuery = $"SELECT * FROM {tableName}";
+            using (var adapter = SqLiteDataAdapterFactory.CreateDataAdapter
+                       (SqLiteCommandFactory.CreateCommand(getTableQuery, _connection)))
             {
-                var dataSet = new DataSet();
-                adapter.Fill(dataSet);
-                return dataSet;
+                return DataSetFactory.CreateAdFillDataSet(adapter);
             }
         }
 
         public DataSet GetTables()
         {
-            using (var command = new SQLiteCommand("SELECT name Tables FROM sqlite_master WHERE type = 'table' and name != 'sqlite_sequence'", _connection))
-            using (var adapter = new SQLiteDataAdapter(command))
+            var getTablesQuery =
+                "SELECT name FROM sqlite_master WHERE type = 'table'";
+            using (var adapter = SqLiteDataAdapterFactory.CreateDataAdapter
+                       (SqLiteCommandFactory.CreateCommand(getTablesQuery, _connection)))
             {
-                var dataSet = new DataSet();
-                adapter.Fill(dataSet);
-                return dataSet;
+                return DataSetFactory.CreateAdFillDataSet(adapter);
             }
         }
 
@@ -41,12 +41,10 @@ namespace DbManager.Services
         {
             try
             {
-                using (var command = new SQLiteCommand(query, _connection))
-                using (var adapter = new SQLiteDataAdapter(command))
+                using (var adapter = SqLiteDataAdapterFactory.CreateDataAdapter
+                           (SqLiteCommandFactory.CreateCommand(query, _connection)))
                 {
-                    var dataSet = new DataSet();
-                    adapter.Fill(dataSet);
-                    result = dataSet;
+                    result = DataSetFactory.CreateAdFillDataSet(adapter);
                     errorMessage = null;
                     return true;
                 }
@@ -60,21 +58,20 @@ namespace DbManager.Services
             }
         }
 
-        public int ExecuteNonQuery(string query, out string errorMessage)
+        public bool ExecuteNonQuery(string query, out int rowsAffected, out string errorMessage)
         {
             try
             {
-                using (var command = new SQLiteCommand(query, _connection))
-                {
-                    errorMessage = null;
-                    return command.ExecuteNonQuery();
-                    ;
-                }
+                errorMessage = null;
+                rowsAffected = SqLiteCommandFactory.CreateCommand(query, _connection)
+                    .ExecuteNonQuery();
+                return true;
             }
             catch (SQLiteException ex)
             {
                 errorMessage = ex.Message;
-                return 0;
+                rowsAffected = 0;
+                return false;
             }
         }
 

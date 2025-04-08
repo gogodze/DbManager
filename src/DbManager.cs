@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Data.SQLite;
 using System.Windows.Forms;
 using DbManager.Abstractions;
 
@@ -17,6 +18,7 @@ namespace DbManager
             InitializeComponent();
         }
 
+        //not ideal but will work...
         private bool IsQuery(string sql)
         {
             sql = sql.Trim().ToUpper();
@@ -26,7 +28,8 @@ namespace DbManager
             {
                 return true;
             }
-            else if (sql.StartsWith("INSERT") || sql.StartsWith("UPDATE") || sql.StartsWith("DELETE") || sql.StartsWith("CREATE"))
+
+            if (sql.StartsWith("INSERT") || sql.StartsWith("UPDATE") || sql.StartsWith("DELETE") || sql.StartsWith("CREATE"))
             {
                 return false;
             }
@@ -59,7 +62,7 @@ namespace DbManager
             {
                 _databaseAccessService.ConnectToDatabase(filePath);
                 UpdateDataView();
-                executeQuery.Visible = true;
+                executeInput.Visible = true;
                 closeDatabase.Visible = true;
             }
 
@@ -78,7 +81,7 @@ namespace DbManager
                 {
                     _databaseAccessService.ConnectToDatabase(filePath);
                     UpdateDataView();
-                    executeQuery.Visible = true;
+                    executeInput.Visible = true;
                     closeDatabase.Visible = true;
                 }
 
@@ -94,17 +97,27 @@ namespace DbManager
         }
 
 
-        private void ExecuteQuery(object sender, EventArgs e)
+        private void ExecuteInput(object sender, EventArgs e)
         {
-            if (_databaseAccessService.ExecuteQuery(queryBox.Text, out var result, out string error))
+            //if it's a query execute it. if not then execute non query.
+            if (IsQuery(queryBox.Text))
             {
-                UpdateDataView(result);
-                logWindow.Text = "";
+                logWindow.Text = _databaseAccessService
+                    .ExecuteQuery(queryBox.Text, out var result, out var errorMessage)
+                    ? ""
+                    : errorMessage;
+                if (result != null)
+                {
+                    UpdateDataView(result);
+                }
             }
-
             else
             {
-                logWindow.Text = error;
+                logWindow.Text = _databaseAccessService
+                    .ExecuteNonQuery(queryBox.Text, out var rowsAffected, out string errorMessage)
+                    ? $"rows affected: {rowsAffected.ToString()}"
+                    : errorMessage;
+                UpdateDataView();
             }
         }
 
@@ -112,7 +125,7 @@ namespace DbManager
         {
             _databaseAccessService.CloseConnection();
             dataView.DataSource = null;
-            executeQuery.Visible = false;
+            executeInput.Visible = false;
             closeDatabase.Visible = false;
         }
 
@@ -121,8 +134,14 @@ namespace DbManager
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 string cellValue = dataView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
-
-                UpdateDataView(tableName: cellValue);
+                try
+                {
+                    UpdateDataView(tableName: cellValue);
+                }
+                catch (SQLiteException)
+                {
+                    MessageBox.Show(@"That table doesnt exist", @"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
